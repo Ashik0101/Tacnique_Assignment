@@ -1,7 +1,12 @@
-const exprss = require("express");
+const express = require("express");
 const { connection } = require("./config/db");
+const { userRouter } = require("./routes/UserRoutes");
 
-const app = exprss();
+const app = express();
+app.use(express.json());
+
+//User
+app.use("/auth", userRouter);
 
 app.listen(process.env.PORT, async () => {
   try {
