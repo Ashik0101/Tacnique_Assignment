@@ -3,9 +3,14 @@ const { connection } = require("./config/db");
 const { userRouter } = require("./routes/UserRoutes");
 const { taskRouter } = require("./routes/TaskRoutes");
 const { authenticator } = require("./middlewares/authenticator");
+const { logRequest } = require("./middlewares/logger");
+const { limiter } = require("./middlewares/limiter");
 
 const app = express();
 app.use(express.json());
+app.use(limiter);
+//using logger middleware
+app.use(logRequest);
 
 //User
 app.use("/auth", userRouter);
