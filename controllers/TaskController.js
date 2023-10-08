@@ -74,7 +74,9 @@ const getTaskById = async (req, res) => {
     }
     // Check if the user is the task creator
     if (task.user.toString() !== req.body.user) {
-      return res.status(401).json({ message: "Not Authorized" });
+      return res
+        .status(403)
+        .json({ message: "Not Authorized To View This Resource" });
     }
 
     res.status(200).json({ task });
@@ -119,7 +121,9 @@ const updateTaskById = async (req, res) => {
 
     // Check if the user is the task creator
     if (task.user.toString() !== req.body.user) {
-      return res.status(401).json({ message: "Not Authorized" });
+      return res
+        .status(403)
+        .json({ message: "Not Authorized To Update This Resource" });
     }
 
     // Update task fields based on the request body
@@ -157,7 +161,9 @@ const deleteTaskById = async (req, res) => {
 
     // Check if the user is the task creator (optional)
     if (task.user.toString() !== req.body.user) {
-      return res.status(401).json({ message: "Not Authorized" });
+      return res
+        .status(403)
+        .json({ message: "Not Authorized To Delete This Resource" });
     }
 
     // Delete the task

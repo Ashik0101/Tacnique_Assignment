@@ -9,10 +9,10 @@ const {
 
 const taskRouter = express.Router();
 
-taskRouter.post("/task", addTask);
-taskRouter.get("/task", getAllTasks);
-taskRouter.get("/task/:taskId", getTaskById);
-taskRouter.put("/task/:taskId", updateTaskById);
-taskRouter.delete("/task/:taskId", deleteTaskById);
+taskRouter.post("/", addTask);
+taskRouter.get("/", getAllTasks);
+taskRouter.get("/:taskId", getTaskById);
+taskRouter.put("/:taskId", updateTaskById);
+taskRouter.delete("/:taskId", deleteTaskById);
 
 module.exports = { taskRouter };
